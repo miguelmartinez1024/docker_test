@@ -1,4 +1,15 @@
-FROM node:alpine
-COPY . /app
+FROM node:12
+
 WORKDIR /app
-CMD node app.js
+
+COPY package*.json ./
+
+run npm install
+
+COPY . .
+
+ENV PORT=8080
+
+EXPOSE 8080
+
+CMD ["npm", "start"]
